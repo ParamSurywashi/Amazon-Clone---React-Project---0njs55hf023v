@@ -1,0 +1,54 @@
+.navBar{
+    display: flex;
+    flex-direction: row;
+    background-color: #131921;
+    padding: 1% 0px;
+    align-items: center;
+    justify-content: space-around;
+}
+#firstLogo{
+    width: 8%;
+}
+#searchBox{
+   display: inline;
+   padding: 0px;
+   margin: 0px;
+   height: 8%;
+   width: 70%;
+}
+.imageLogo{
+    height: 100%;
+    width: 100%;
+}
+
+.searchBar{
+    height: 2em;
+    flex-wrap: wrap;
+    width: 90%;
+}
+.searchBtn{
+   height: 2rem;
+    width: 2rem;
+    background-color: rgb(180, 128, 33);
+    text-align: center;
+    place-content: center;
+}  
+
+#helloTxt{
+    font-size: small;
+}
+
+.linkHead{
+    color: white;
+    font-weight: bold;
+}
+
+#linkOrderIcon{
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+}
+#orderCount{
+    font-size: 18px;
+    margin-bottom: 50px;
+}

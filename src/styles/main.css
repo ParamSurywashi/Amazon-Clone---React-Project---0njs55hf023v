@@ -1,0 +1,40 @@
+.bodyGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0em;
+    row-gap: 0em;
+    margin: 0px 5%;
+    background-image: linear-gradient(to right, #b6c3c2, #b8e0d3);
+    /* border: 10px solid gray; */
+}
+
+.AddtoBucketBtn{
+    background-color: rgb(180, 128, 33);
+    border: 1px solid black;
+    
+}
+.btnAddCart{
+    text-align: center;
+}
+.productImage{
+    text-align: center;
+}
+.imageProduct{
+    height: 20rem;
+    width: 20em;
+}
+.rateDiv{
+    font-weight: bold;
+}
+
+.productsData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    margin: 1em;
+    padding: 1em 5em;
+}
+.heartColor{
+    color: rgb(206, 126, 50);
+}

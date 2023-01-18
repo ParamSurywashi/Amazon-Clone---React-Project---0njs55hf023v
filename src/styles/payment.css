@@ -1,0 +1,101 @@
+.headingBox{
+    width: 100%;
+    background-image: linear-gradient(white, silver);
+    font-size: 32px;
+    text-align: center;
+    place-content: center;
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.addressBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.payDiv{
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+.boldDiv{
+    font-weight: bold;
+}
+#boldDiv{
+    color: blue;
+    text-decoration: underline;
+}
+
+#addDiv{
+    width: 50%;
+}
+#changeDiv{
+    color: blue;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+#textPaymentHeading{
+    color:  rgb(250, 166, 12);
+    font-weight: bold;
+}
+
+.placeOrderBtn{
+    background-color: rgb(180, 128, 33);
+    border: 1px solid black;
+    width: 20em;
+    height: 3em;
+}
+
+#payBox{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#payBox form{
+    width: 60%;
+}
+#orderSummary{
+    border: 1px solid black;
+    border-radius: 5%;
+    padding: 2em;
+    width: 20%;
+    background-image: linear-gradient(white, silver);
+}
+
+.orderLastTxt{
+    text-align: right;
+}
+
+#paymentIDD{
+   padding: 1em;
+   background-color: silver;
+   
+}
+
+.payDiv input{
+    width: 50%;
+    height: 30px;
+}
+
+
+.addressForm{
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(gray, silver);
+    margin: 2% 38%  ;
+    padding: 2%;
+    width: 20%;
+
+}
+
+.addressForm input{
+    width: -webkit-fill-available;
+}
+.addressForm button{
+    padding: 2% 2em;
+    background-color: chocolate;
+    border: none;
+    font-size: 16px;
+}
