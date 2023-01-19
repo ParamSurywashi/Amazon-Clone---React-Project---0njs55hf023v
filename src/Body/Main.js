@@ -2,12 +2,14 @@ import React,{useState, useEffect} from 'react'
 import Product from './Product';
 import '../styles/main.css';
 import {useDispatch, useSelector} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { add } from '../Stores/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Main() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
     const checkProductinBucket = useSelector((state)=>state.bucket);
     const [ProductList, setProductList] = useState([]);
     const fetchProducts = ()=>{
@@ -41,6 +43,9 @@ function Main() {
           alert("Already Have in Bucket");
         }
       }
+      const handleGotoBucket = (e)=>{
+        navigate("/bucket");
+      }
   return (
     <>
     <div className='bodyGrid'>
@@ -49,6 +54,7 @@ function Main() {
     })}
     
 </div>
+<div id='goToBtnDiv' onClick={handleGotoBucket}><button className='GotoBucketBtn'>Go to Bucket</button></div>
 <ToastContainer />
     </>
   )

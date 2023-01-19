@@ -13,6 +13,22 @@
     border: 1px solid black;
     
 }
+.GotoBucketBtn{
+    background-color: rgb(180, 128, 33);
+    border: 1px solid black;
+    height: 3em;
+    width: auto;
+    padding: 0px 2em;
+    
+}
+
+#goToBtnDiv{
+    position: fixed;
+  right: 0px; bottom: 0px;
+  margin: 0px 6em 0px 0px;
+  padding: 5px;
+}
+
 .btnAddCart{
     text-align: center;
 }

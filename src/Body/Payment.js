@@ -127,7 +127,7 @@ useEffect(()=>{
             <label>Card Number</label> <br />
             <input type="text" id="cardNumber" placeholder='Card Number' value={cardDetail.cardNumber}  onChange={(e)=>setcardDetails({...cardDetail, cardNumber: e.target.value})}/> <br /><br />
             <label>Expiry Date</label> <br />
-            <input type="text" id='expiryDate' placeholder='YY/MM' value={cardDetail.expiryDate}   onChange={(e)=>setcardDetails({...cardDetail, expiryDate: e.target.value})}/> <br /><br />
+            <input type="month" id='expiryDate' placeholder='YY/MM' value={cardDetail.expiryDate}   onChange={(e)=>setcardDetails({...cardDetail, expiryDate: e.target.value})}/> <br /><br />
             <label>CVV</label> <br />
             <input type="number"id='cvv' value={cardDetail.cvv}   onChange={(e)=>setcardDetails({...cardDetail, cvv: e.target.value})}/> <br /><br />
             <label>Cardholder's Name</label> <br />
