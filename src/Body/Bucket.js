@@ -46,23 +46,29 @@ function Bucket() {
 
     
     const handleDeletefromBucket = (id)=>{
-      console.log(id);
       dispatch(remove(id));
     }
    
     const deleteFromBucket = (e)=>{
          let ProductId = e.target.id.slice(14);
-         let ItemsOld = document.getElementById("countProduct").innerText.slice(1, 3);
+         let ItemsOld = document.getElementById("countItmesOld"+ProductId).innerText;
        //  console.log(ItemsOld);
        console.log(ProductId);
-         if(ItemsOld>0){
-          dispatch(remove(ProductId));
+         if(ItemsOld==1){
+          handleDeletefromBucket(ProductId);
+         }else if(ItemsOld>1){
+          ItemsOld--;
+         document.getElementById("countItmesOld"+ProductId).innerText= ItemsOld;
          }
     }
     
     const AddFromBucket = (e)=>{
       let ProductId = e.target.id.slice(11);
-      
+      let ItemsOld = document.getElementById("countItmesOld"+ProductId).innerText;
+      //   alert(ItemsOld);
+         ItemsOld++;
+         document.getElementById("countItmesOld"+ProductId).innerText= ItemsOld;
+      //  setEachItems(eachItmes+1);
     }
 
   return (
@@ -81,7 +87,7 @@ function Bucket() {
                    <div className='productTitle'>{product.title}</div>
                   <div className='rateDiv'>&#x20B9;{product.price}</div>
                  <div>{createHeartBucket(product.rating.rate)}</div>
-                 <div id='countProduct'> <button id={"deleteOnBucket"+product.id} onClick={deleteFromBucket}> - </button> {eachItmes} <button id={"addOnBucket"+product.id} onClick={AddFromBucket}> + </button></div>
+                 <div id={'countItmes'+product.id} className='countProduct'> <button id={"deleteOnBucket"+product.id} onClick={deleteFromBucket}> - </button> <span id={'countItmesOld'+product.id}> {eachItmes} </span> <button id={"addOnBucket"+product.id} onClick={AddFromBucket}> + </button></div>
                <div><button className='deleteFromBucketBtn' onClick={()=> handleDeletefromBucket(product.id)}>Remove from Basket</button></div>
            </div>
         </div>
