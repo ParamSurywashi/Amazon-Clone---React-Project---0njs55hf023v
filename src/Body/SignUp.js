@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { Signup } from '../Stores/loginSlice';
 import { signUpFormValidation } from '../utils/signupformvalidation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
   const initialUserDtails = {
@@ -29,7 +31,11 @@ const initialErrors = {
       setUseErrorsignup(initialErrors);
     dispatchSignUp(Signup(userSignUp));
       setUseSignUp(initialUserDtails);
-      alert("Successfull Sign Up "+userSignUp.nameSignUp);
+     // alert("Successfull Sign Up "+userSignUp.nameSignUp);
+     toast.success("Successfull Sign Up "+userSignUp.nameSignUp, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      className: 'toast-message-sign-up'
+  });
     }else{
       if(result.nameSignUp != "" || result.emailormobileSignUp != "" || result.passwordSignUp !=""){
         
@@ -67,6 +73,7 @@ const initialErrors = {
       </div>
       
       </div>
+      <ToastContainer />
 
     </>
   )

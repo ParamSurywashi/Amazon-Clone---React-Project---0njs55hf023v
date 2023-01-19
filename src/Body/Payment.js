@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { orderProduct } from '../Stores/placeOrderSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Payment() {
   const navigate = useNavigate();
@@ -53,7 +55,11 @@ const [updateAddress, setUpdateAddress] = useState({
             address : document.getElementById("addDiv").innerText
           }
           orderbyRedux(orderProduct(productBucket));
-          alert("SuccessFull Order Place");
+      //    alert("SuccessFull Order Place");
+          toast.success('SuccessFull Order Place', {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: 'toast-message-order-place'
+        });
          }else{
           alert("Please Login First");
           navigate("/signIn");
@@ -150,6 +156,7 @@ useEffect(()=>{
      
     </div>
     </div>
+    <ToastContainer />
     </>
   )
 }

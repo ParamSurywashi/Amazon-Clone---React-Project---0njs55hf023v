@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux';
 import { saveUserData } from '../Stores/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
   const dispatchUserList = useDispatch();
@@ -24,7 +26,11 @@ function SignIn() {
             if(userList.emailormobileSignUp===emailIdorMobile && userList.passwordSignUp===PasswordSignIn){
                 console.log(userList);
                 dispatchUserList(saveUserData(userList));
-                alert("Login Success............."+userList.nameSignUp);
+               // alert("Login Success............."+userList.nameSignUp);
+               toast.success("Login Success............."+userList.nameSignUp, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                className: 'toast-message-sign-up'
+            });
             }
           })
          
@@ -47,6 +53,7 @@ function SignIn() {
           <Link to="/signUp"> <button>Create your Amazon Account</button> </Link>
         </div>
     </div>
+    <ToastContainer />
     </>
   )
 }

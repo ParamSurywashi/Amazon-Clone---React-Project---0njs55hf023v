@@ -38,3 +38,9 @@
 .heartColor{
     color: rgb(206, 126, 50);
 }
+
+.toast-message-add-bucket{
+    background-color: rgb(85, 241, 85);
+    font-size: 22px;
+    padding: 2em;
+}
