@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 function Bucket() {
    const dispatch = useDispatch();
    const productBucket = useSelector((state)=> state.bucket);
-   const [eachItmes, setEachItems] = useState(0);
+   
+   const [eachItmes, setEachItems] = useState(1);
    let sumTotal =0;
     productBucket.map((prdct)=>{
       sumTotal+=prdct.price;
@@ -45,10 +46,25 @@ function Bucket() {
 
     
     const handleDeletefromBucket = (id)=>{
+      console.log(id);
       dispatch(remove(id));
     }
    
+    const deleteFromBucket = (e)=>{
+         let ProductId = e.target.id.slice(14);
+         let ItemsOld = document.getElementById("countProduct").innerText.slice(1, 3);
+       //  console.log(ItemsOld);
+       console.log(ProductId);
+         if(ItemsOld>0){
+          dispatch(remove(ProductId));
+         }
+    }
     
+    const AddFromBucket = (e)=>{
+      let ProductId = e.target.id.slice(11);
+      
+    }
+
   return (
     <div className='bucketDiv'>
        <div id='advCheckoutBox'>
@@ -65,7 +81,7 @@ function Bucket() {
                    <div className='productTitle'>{product.title}</div>
                   <div className='rateDiv'>&#x20B9;{product.price}</div>
                  <div>{createHeartBucket(product.rating.rate)}</div>
-                 <div> <button>-</button> {eachItmes} <button>+</button></div>
+                 <div id='countProduct'> <button id={"deleteOnBucket"+product.id} onClick={deleteFromBucket}> - </button> {eachItmes} <button id={"addOnBucket"+product.id} onClick={AddFromBucket}> + </button></div>
                <div><button className='deleteFromBucketBtn' onClick={()=> handleDeletefromBucket(product.id)}>Remove from Basket</button></div>
            </div>
         </div>

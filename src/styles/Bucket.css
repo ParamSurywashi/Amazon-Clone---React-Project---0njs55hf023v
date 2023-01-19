@@ -15,6 +15,10 @@
    margin: 2em 2em 2em 2em;
    border: 1px solid silver;
 }
+#countProduct{
+    padding: 2% 0px;
+    
+}
 
 .proceedtoCheckBtn{
     background-color: rgb(180, 128, 33);
