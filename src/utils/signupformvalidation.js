@@ -1,10 +1,26 @@
 const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
 
-function isEmailAddress(str) {
+// function isEmailAddress(str) {
 
-    return str.match(pattern);    
+//     return str.match(pattern);    
 
+// }
+function validateEmail(email) { //Validates the email address
+    var emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return emailRegex.test(email);
 }
+
+function validatePhone(phone) { //Validates the phone number
+    var phoneRegex = /^(\+91-|\+91|0)?\d{10}$/; // Change this regex based on requirement
+    return phoneRegex.test(phone);
+}
+
+// function doValidate(inputValue) {
+//    if (!validateEmail(inputValue) && !validatePhone(inputValue) ){
+//     setErrorMsg("Invalid Email");
+//     return false;
+// }
+// }
 
 const signUpFormValidation = (formData) => {
 
@@ -31,8 +47,8 @@ const signUpFormValidation = (formData) => {
      }else{
         error['passwordSignUp'] = 'Password and Conform Password not same'
      }
-    if(formData.emailormobileSignUp && isEmailAddress(formData.emailormobileSignUp) === null){
-        error['emailormobileSignUp'] = 'Not a valid email'
+    if(formData.emailormobileSignUp && (!validateEmail(formData.emailormobileSignUp) && !validatePhone(formData.emailormobileSignUp) )){
+        error['emailormobileSignUp'] = 'Not a valid email or mobile number'
     }
     if(Object.keys(error).length === 0) return null
     return error

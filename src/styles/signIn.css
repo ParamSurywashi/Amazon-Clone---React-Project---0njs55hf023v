@@ -32,7 +32,10 @@
     width: 101%;
     height: 3em;
  }  
-
+ .signInBox span{
+     color: red;
+     font-size: 14px;
+ } 
  .signUpBtn{
     display: flex;
     flex-direction: column;

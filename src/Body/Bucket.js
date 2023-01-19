@@ -52,7 +52,7 @@ function Bucket() {
     const deleteFromBucket = (e)=>{
          let ProductId = e.target.id.slice(14);
          let ItemsOld = document.getElementById("countItmesOld"+ProductId).innerText;
-       //  console.log(ItemsOld);
+     
        console.log(ProductId);
          if(ItemsOld==1){
           handleDeletefromBucket(ProductId);
@@ -65,10 +65,9 @@ function Bucket() {
     const AddFromBucket = (e)=>{
       let ProductId = e.target.id.slice(11);
       let ItemsOld = document.getElementById("countItmesOld"+ProductId).innerText;
-      //   alert(ItemsOld);
+   
          ItemsOld++;
          document.getElementById("countItmesOld"+ProductId).innerText= ItemsOld;
-      //  setEachItems(eachItmes+1);
     }
 
   return (

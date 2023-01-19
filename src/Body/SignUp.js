@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import amzLogo from '../images/amazon-logo.png';
 import "../styles/signUp.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { Signup } from '../Stores/loginSlice';
 import { signUpFormValidation } from '../utils/signupformvalidation';
@@ -22,9 +22,10 @@ const initialErrors = {
   passwordSignUp: ''
 };
      const dispatchSignUp = useDispatch();
+     const navigatePage = useNavigate();
     const [userSignUp, setUseSignUp] = useState(initialUserDtails);
     const [userErrorsignup, setUseErrorsignup] = useState(initialErrors);
-   function handleSaveData(e){
+function handleSaveData(e){
     const result = signUpFormValidation(userSignUp);
 
     if(result===null){
@@ -36,6 +37,9 @@ const initialErrors = {
       position: toast.POSITION.BOTTOM_RIGHT,
       className: 'toast-message-sign-up'
   });
+     setTimeout(()=>{
+      navigatePage("/signIn");
+     },2000);
     }else{
       if(result.nameSignUp != "" || result.emailormobileSignUp != "" || result.passwordSignUp !=""){
         
