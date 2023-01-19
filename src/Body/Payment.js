@@ -13,8 +13,10 @@ function Payment() {
   const CurrentUser = useSelector((state)=>state.saveDataofUser);
   const location = useLocation();
   const { from } = location.state;
-//  console.log("Param"+ from);
+
   const[giftCard, setGiftCard] = useState(0);
+
+  
   const [cardDetail, setcardDetails] = useState({
        cardNumber: '',
        expiryDate: '',
@@ -84,16 +86,11 @@ function getDateTime(){
   return `${day}-${month}-${year} : ${time}`;
 }
 useEffect(()=>{
-  // if(document.getElementById("giftCheckBox").checked){
-  // setGiftCard(giftCard+20);
-  // }
+  if(from){
+    setGiftCard(20);
+  }
 },[])
-//     function handleGiftCharge(){ 
-//       alert(document.getElementById("giftCheckBox").checked);
-//       if(document.getElementById("giftCheckBox").checked){
-//       setGiftCard(giftCard+20);
-//       }
-// }
+
   return (
     <>
     <div className='headingBox'> Checkout ({productBucket.length} itmes) </div>

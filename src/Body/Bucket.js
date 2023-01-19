@@ -20,8 +20,8 @@ function Bucket() {
     let giftData = false;
 
     function handleCheckBox(e){
-      setGift(e.target.value);
-      giftData=document.getElementById("giftCheckBox").checked;
+      setGift(e.target.checked);
+      
     }
  
     function getProceed(){
@@ -29,7 +29,7 @@ function Bucket() {
             <>
             Subtotal ( {productBucket.length}items) &#x20B9;{sumTotal} <br/>
              <span> <input id='giftCheckBox' type="checkbox" value={gift} onChange={(e)=>handleCheckBox(e) }/> This Item contains a gift </span> <br /> 
-             <Link to="/payment" state={{ from: giftData }}> <button className='proceedtoCheckBtn' >Proceed to Checkout</button> </Link>
+             <Link to="/payment" state={{ from: gift }}> <button className='proceedtoCheckBtn' >Proceed to Checkout</button> </Link>
             </>)
     }
 
@@ -62,8 +62,10 @@ function Bucket() {
          }
     }
     
-    const AddFromBucket = (e)=>{
-      let ProductId = e.target.id.slice(11);
+    function AddFromBucket(productForAdd){
+      console.log(productForAdd);
+      let ProductId = productForAdd.id;
+     // let ProductId = e.target.id.slice(11);
       let ItemsOld = document.getElementById("countItmesOld"+ProductId).innerText;
    
          ItemsOld++;
@@ -86,7 +88,7 @@ function Bucket() {
                    <div className='productTitle'>{product.title}</div>
                   <div className='rateDiv'>&#x20B9;{product.price}</div>
                  <div>{createHeartBucket(product.rating.rate)}</div>
-                 <div id={'countItmes'+product.id} className='countProduct'> <button id={"deleteOnBucket"+product.id} onClick={deleteFromBucket}> - </button> <span id={'countItmesOld'+product.id}> {eachItmes} </span> <button id={"addOnBucket"+product.id} onClick={AddFromBucket}> + </button></div>
+                 <div id={'countItmes'+product.id} className='countProduct'> <button id={"deleteOnBucket"+product.id} onClick={deleteFromBucket}> - </button> <span id={'countItmesOld'+product.id}> {eachItmes} </span> <button id={"addOnBucket"+product.id} onClick={()=>AddFromBucket(product)}> + </button></div>
                <div><button className='deleteFromBucketBtn' onClick={()=> handleDeletefromBucket(product.id)}>Remove from Basket</button></div>
            </div>
         </div>

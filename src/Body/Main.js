@@ -25,7 +25,7 @@ function Main() {
       },[])
 
       const handleAddToBucket = (products)=>{
-        console.log(products)
+       // console.log(products)
         let countForProduct=0;
       // dispatch({type:"bucket/add", payload : products})
       checkProductinBucket.map((oldPrdcts)=>{
