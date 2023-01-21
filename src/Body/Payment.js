@@ -18,15 +18,15 @@ function Payment() {
   const { from } = location.state;
 
   const[giftCard, setGiftCard] = useState(0);
-
+  const cardInitialState = {
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardholderName: '',
+    upiId:''
+  };
   
-  const [cardDetail, setcardDetails] = useState({
-       cardNumber: '',
-       expiryDate: '',
-       cvv: '',
-       cardholderName: '',
-       upiId:''
-  });
+  const [cardDetail, setcardDetails] = useState(cardInitialState);
 
   const [addressDetails, setAddressDetails] = useState({
     name: '',
@@ -45,6 +45,7 @@ const [updateAddress, setUpdateAddress] = useState({
   state:'MP',
   pincode: '458664'
 });
+const [cardErrorDetail, setcardErrorDetails] = useState(cardInitialState);
 
 const[radioAddress, setRadioAddress] = useState("");
   const productBucket = useSelector((state)=> state.bucket);
@@ -56,25 +57,38 @@ const[radioAddress, setRadioAddress] = useState("");
   function placeOrderFunc(e){
          e.preventDefault();
       if(radioAddress!==""){
-         if(CurrentUser.length>0){
-          
-          const ordetData={
-            dateTime : getDateTime(),
-            address : document.getElementById("addDiv").innerText
+         setcardErrorDetails(cardInitialState);
+        if(radioAddress==="card"){
+        cardValidate();
+        }else if(radioAddress === "upi"){
+          if(upiValidate()){
+             placeForOrder();
+          }else{
+            setcardErrorDetails({...cardErrorDetail, upiId : "Invalid UPI Id..."});
           }
-          orderbyRedux(orderProduct(productBucket));
-      //    alert("SuccessFull Order Place");
-          toast.success('SuccessFull Order Place', {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            className: 'toast-message-order-place'
-        });
-         }else{
-          toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
-          setTimeout(()=>{
-            navigate("/signIn");
-          },2000)
+        }
+        function placeForOrder(){
+          if(CurrentUser.length>0){
+          
+            const ordetData={
+              dateTime : getDateTime(),
+              address : document.getElementById("addDiv").innerText
+            }
+            orderbyRedux(orderProduct(productBucket));
+        //    alert("SuccessFull Order Place");
+            toast.success('SuccessFull Order Place', {
+              position: toast.POSITION.BOTTOM_RIGHT,
+              className: 'toast-message-order-place'
+          });
+           }else{
+            toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
+            setTimeout(()=>{
+              navigate("/signIn");
+            },2000)
+           
+           }
+        }
          
-         }
       }else{
         toast.error("Please Select Payment option",{ position: toast.POSITION.TOP_CENTER});
       }
@@ -114,6 +128,17 @@ const onRadioBtnChange = (e)=>{
     document.getElementById("upiBoxDiv").style.display="block";
   }
 }
+function upiValidate(){
+ let upiInputValue= document.getElementById("upiId").value;
+ var upiPattern = /^[\w.-]+@[\w.-]+$/;
+    let upiResult = upiPattern.test(upiInputValue);
+    return upiResult;
+}
+
+function cardValidate(){
+
+}
+
   return (
     <>
     <div className='headingBox'> Checkout ({productBucket.length} itmes) </div>
@@ -159,6 +184,7 @@ const onRadioBtnChange = (e)=>{
              <div  id="upiBoxDiv">
             <label>UPI Id</label> <br />
             <input type="text" id="upiId" placeholder='UPI Id' value={cardDetail.upiId}  onChange={(e)=>setcardDetails({...cardDetail, upiId: e.target.value})}/> <br />
+            <span>{cardErrorDetail.upiId}</span>
              </div>
         </div>
      </div>
