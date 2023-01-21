@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { orderProduct } from '../Stores/placeOrderSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SiPhonepe,SiPaytm, SiAmazonpay, SiGooglepay} from "react-icons/si";
+import { SlCreditCard } from "react-icons/sl";
+ import { FaCcMastercard } from "react-icons/fa";
 
 function Payment() {
   const navigate = useNavigate();
@@ -42,14 +45,17 @@ const [updateAddress, setUpdateAddress] = useState({
   state:'MP',
   pincode: '458664'
 });
+
+const[radioAddress, setRadioAddress] = useState("");
   const productBucket = useSelector((state)=> state.bucket);
  
   let sumTotal =0;
   productBucket.map((prdct)=>{
     sumTotal+=prdct.price;
   })
-  function notify(e){
+  function placeOrderFunc(e){
          e.preventDefault();
+      if(radioAddress!==""){
          if(CurrentUser.length>0){
           
           const ordetData={
@@ -63,10 +69,15 @@ const [updateAddress, setUpdateAddress] = useState({
             className: 'toast-message-order-place'
         });
          }else{
-          alert("Please Login First");
-          navigate("/signIn");
+          toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
+          setTimeout(()=>{
+            navigate("/signIn");
+          },2000)
+         
          }
-        
+      }else{
+        toast.error("Please Select Payment option",{ position: toast.POSITION.TOP_CENTER});
+      }
   }
 
   const changeAddress = (e)=>{
@@ -91,6 +102,18 @@ useEffect(()=>{
   }
 },[])
 
+const onRadioBtnChange = (e)=>{
+  document.getElementById("cardBoxDiv").style.display="none";
+  document.getElementById("upiBoxDiv").style.display="none";
+  if(e.target.value === "card"){
+    setRadioAddress("card");
+    document.getElementById("cardBoxDiv").style.display="block";
+
+  }else if(e.target.value === "upi"){
+    setRadioAddress("upi");
+    document.getElementById("upiBoxDiv").style.display="block";
+  }
+}
   return (
     <>
     <div className='headingBox'> Checkout ({productBucket.length} itmes) </div>
@@ -119,8 +142,8 @@ useEffect(()=>{
       <hr />
      <div className='paymentBox'> <span id="textPaymentHeading">2. Choose a payment method</span>
         <div className='payDiv'>
-            <div > Credit or Debit Card Details</div>
-
+             <input type="radio"  checked={radioAddress == "card"}  value="card" onChange={onRadioBtnChange} /> <label> Credit or Debit Card Details  <SlCreditCard /> <FaCcMastercard/></label>
+            <div id="cardBoxDiv">
             <label>Card Number</label> <br />
             <input type="text" id="cardNumber" placeholder='Card Number' value={cardDetail.cardNumber}  onChange={(e)=>setcardDetails({...cardDetail, cardNumber: e.target.value})}/> <br /><br />
             <label>Expiry Date</label> <br />
@@ -130,15 +153,17 @@ useEffect(()=>{
             <label>Cardholder's Name</label> <br />
             <input type="text" id='cardholderName' placeholder='Cardholders Name' value={cardDetail.cardholderName}   onChange={(e)=>setcardDetails({...cardDetail, cardholderName: e.target.value})}/> <br /> <br />
         </div>
+        </div>
         <div className='payDiv'>
-            <div>UPI Method</div>
+           <input type="radio" checked={radioAddress == "upi"}  value="upi" onChange={onRadioBtnChange} />  <label>UPI Method <SiPhonepe /> <SiGooglepay /> <SiAmazonpay /> <SiPaytm/> </label>
+             <div  id="upiBoxDiv">
             <label>UPI Id</label> <br />
             <input type="text" id="upiId" placeholder='UPI Id' value={cardDetail.upiId}  onChange={(e)=>setcardDetails({...cardDetail, upiId: e.target.value})}/> <br />
-          
+             </div>
         </div>
      </div>
      <div>
-      <button className='placeOrderBtn' onClick={(e)=>notify(e)}>Place Your Order</button>
+      <button className='placeOrderBtn' onClick={(e)=>placeOrderFunc(e)}>Place Your Order</button>
  
      </div>
     </form>
