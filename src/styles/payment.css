@@ -111,7 +111,10 @@
     padding: 14px 3px;
     width: 50%;
 }
-
+#cardBoxDiv span{
+    color: red;
+    font-size: 12px;
+}
 #upiBoxDiv{
     padding: 5px 12px;
 }
@@ -122,4 +125,12 @@
 #upiBoxDiv span{
     color: red;
     font-size: 12px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

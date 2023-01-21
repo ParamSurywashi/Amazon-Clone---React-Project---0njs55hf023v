@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { SiPhonepe,SiPaytm, SiAmazonpay, SiGooglepay} from "react-icons/si";
 import { SlCreditCard } from "react-icons/sl";
  import { FaCcMastercard } from "react-icons/fa";
-
+ import { cardDetalsValidate } from '../utils/cardDetailsValidate';
 function Payment() {
   const navigate = useNavigate();
   const orderbyRedux = useDispatch();
@@ -59,7 +59,21 @@ const[radioAddress, setRadioAddress] = useState("");
       if(radioAddress!==""){
          setcardErrorDetails(cardInitialState);
         if(radioAddress==="card"){
-        cardValidate();
+       const cardsInfo = cardValidate();
+       if(cardsInfo===null){
+         placeForOrder();
+       }else{
+        if(cardsInfo.cardNumber != "" || cardsInfo.expiryDate != "" || cardsInfo.cvv !="" || cardsInfo.cardholderName !=""){
+        
+          setcardErrorDetails({
+            ...cardErrorDetail,
+          cardNumber: cardsInfo.cardNumber,
+          expiryDate: cardsInfo.expiryDate,
+          cvv: cardsInfo.cvv,
+          cardholderName: cardsInfo.cardholderName })
+
+    }
+       }
         }else if(radioAddress === "upi"){
           if(upiValidate()){
              placeForOrder();
@@ -136,7 +150,7 @@ function upiValidate(){
 }
 
 function cardValidate(){
-
+    return cardDetalsValidate(cardDetail);
 }
 
   return (
@@ -170,13 +184,17 @@ function cardValidate(){
              <input type="radio"  checked={radioAddress == "card"}  value="card" onChange={onRadioBtnChange} /> <label> Credit or Debit Card Details  <SlCreditCard /> <FaCcMastercard/></label>
             <div id="cardBoxDiv">
             <label>Card Number</label> <br />
-            <input type="text" id="cardNumber" placeholder='Card Number' value={cardDetail.cardNumber}  onChange={(e)=>setcardDetails({...cardDetail, cardNumber: e.target.value})}/> <br /><br />
+            <input type="number" id="cardNumber"  placeholder='Card Number' value={cardDetail.cardNumber}  onChange={(e)=>setcardDetails({...cardDetail, cardNumber: e.target.value})}/> <br /> 
+            <span>{cardErrorDetail.cardNumber}</span><br />
             <label>Expiry Date</label> <br />
-            <input type="month" id='expiryDate' placeholder='YY/MM' value={cardDetail.expiryDate}   onChange={(e)=>setcardDetails({...cardDetail, expiryDate: e.target.value})}/> <br /><br />
+            <input type="month" id='expiryDate' placeholder='YY/MM' value={cardDetail.expiryDate}   onChange={(e)=>setcardDetails({...cardDetail, expiryDate: e.target.value})}/> <br />
+            <span>{cardErrorDetail.expiryDate}</span><br />
             <label>CVV</label> <br />
-            <input type="number"id='cvv' value={cardDetail.cvv}   onChange={(e)=>setcardDetails({...cardDetail, cvv: e.target.value})}/> <br /><br />
+            <input type="number"id='cvv' value={cardDetail.cvv}   onChange={(e)=>setcardDetails({...cardDetail, cvv: e.target.value})}/> <br />
+            <span>{cardErrorDetail.cvv}</span><br />
             <label>Cardholder's Name</label> <br />
-            <input type="text" id='cardholderName' placeholder='Cardholders Name' value={cardDetail.cardholderName}   onChange={(e)=>setcardDetails({...cardDetail, cardholderName: e.target.value})}/> <br /> <br />
+            <input type="text" id='cardholderName' placeholder='Cardholders Name' value={cardDetail.cardholderName}   onChange={(e)=>setcardDetails({...cardDetail, cardholderName: e.target.value})}/> <br />
+            <span>{cardErrorDetail.cardholderName}</span><br />
         </div>
         </div>
         <div className='payDiv'>
