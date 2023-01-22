@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../styles/order.css";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {AiTwotoneHeart} from "react-icons/ai";
 
 function Order() {
+  const [dataOrder, setDataOrder] = useState([]);
     const dispatch = useDispatch();
    const ProductsOrderList = useSelector((state)=> state.orderProduct);
-   console.log(ProductsOrderList)
+   useEffect(()=>{
+    if(ProductsOrderList.length>0){
+      setDataOrder(ProductsOrderList[0]);
+     }
+   })
+   
    let arrHeart = [];
    function createHeartOrder(rate){
        arrHeart=[];
@@ -18,15 +24,15 @@ function Order() {
      return <span className='heartColor' key={index}>{heart}</span>
 }))
    }
-   console.log(ProductsOrderList);
+   
   return (
     <>
      <div className='orderTxt'>Your Order & Returns </div>
       <div className='orderBox'>
-         <div id='orderLengthTxt'>Total {ProductsOrderList[0].length} Order items</div>
+         <div id='orderLengthTxt'>{(dataOrder.length===0) ? "No Order Found" : "Total "+dataOrder.length+ " Order items" }</div>
         <div className='productOrderShows'>
           
-        {ProductsOrderList[0].map((product)=>{
+        {dataOrder.map((product)=>{
          
           return(
             <div className='orderList' key={product.id}>

@@ -97,8 +97,8 @@ const[radioAddress, setRadioAddress] = useState("");
            }else{
             toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
             setTimeout(()=>{
-              navigate("/signIn");
-            },2000)
+              navigate("/signIn",{state : {from : location}});
+            },2000);
            
            }
         }
@@ -155,7 +155,7 @@ function cardValidate(){
 
   return (
     <>
-    <div className='headingBox'> Checkout ({productBucket.length} itmes) </div>
+    <div className='headingBox'> Checkout ({productBucket.length} items) </div>
     <div id='payBox'>
     <form>
      <div className='addressBox'>

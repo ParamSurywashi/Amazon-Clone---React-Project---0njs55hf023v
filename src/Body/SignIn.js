@@ -4,7 +4,7 @@ import amzLogo from '../images/amazon-logo.png';
 import "../styles/signIn.css";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { saveUserData } from '../Stores/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 function SignIn() {
   const dispatchUserList = useDispatch();
   const navigateHistory = useNavigate();
-  
+  const location = useLocation();
+let from = location.state?.from?.pathname;
+
     const loginBucket = useSelector((state)=>state.saveUser);
     const [errorMsg, setErrorMsg] = useState("");
     const [userSignIn, setUseSignIn] = useState({
@@ -46,15 +48,12 @@ function doValidate(inputValue) {
         let checkForUsr =0;
           loginBucket.map((userList,index)=>{
             if(userList.emailormobileSignUp===emailIdorMobile && userList.passwordSignUp===PasswordSignIn){
-               // console.log(userList);
                 dispatchUserList(saveUserData(userList));
                 checkForUsr++;
-               // alert("Login Success............."+userList.nameSignUp);
                toast.success("Login Success............."+userList.nameSignUp, {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 className: 'toast-message-sign-up'
             });
-           // navigateHistory(-2);
             setUseSignIn({emailIdSignIn: '', passowrdSignIn: '' })
             }
           })
