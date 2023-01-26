@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import "../styles/payment.css";
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { orderProduct } from '../Stores/placeOrderSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,10 +9,11 @@ import { SiPhonepe,SiPaytm, SiAmazonpay, SiGooglepay} from "react-icons/si";
 import { SlCreditCard } from "react-icons/sl";
  import { FaCcMastercard } from "react-icons/fa";
  import { cardDetalsValidate } from '../utils/cardDetailsValidate';
+import { localStorageSaver } from '../LocalStorage/localStorageSaver';
+
+
 function Payment() {
   const navigate = useNavigate();
-  const orderbyRedux = useDispatch();
-  const CurrentUser = useSelector((state)=>state.saveDataofUser);
   const location = useLocation();
   const { from } = location.state;
 
@@ -82,25 +82,33 @@ const[radioAddress, setRadioAddress] = useState("");
           }
         }
         function placeForOrder(){
-          if(CurrentUser.length>0){
+          const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
+          console.log(LoadlocalStorage === null);
+           if(LoadlocalStorage != null){
+              if(LoadlocalStorage["signIn"] != null){
+                const localStorageUsers = JSON.parse(window.localStorage.getItem("amazonClone"))["signIn"];
+
+                if(Object.keys(localStorageUsers).length>0){
           
             const ordetData={
               dateTime : getDateTime(),
               address : document.getElementById("addDiv").innerText
             }
-            orderbyRedux(orderProduct(productBucket));
-        //    alert("SuccessFull Order Place");
+
+            localStorageSaver(orderProduct(productBucket), "orderBucketData");
             toast.success('SuccessFull Order Place', {
               position: toast.POSITION.BOTTOM_RIGHT,
               className: 'toast-message-order-place'
           });
            }else{
-            toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
-            setTimeout(()=>{
-              navigate("/signIn",{state : {from : location}});
-            },2000);
-           
+            toasterLogin();
            }
+          }else{
+            toasterLogin();
+          }
+        }else{
+          toasterLogin();
+        }
         }
          
       }else{
@@ -108,6 +116,12 @@ const[radioAddress, setRadioAddress] = useState("");
       }
   }
 
+  function toasterLogin(){
+    toast.info("Please Login First",{ position: toast.POSITION.TOP_CENTER});
+            setTimeout(()=>{
+              navigate("/signIn",{state : {from : location}});
+            },2000);
+  }
   const changeAddress = (e)=>{
        document.getElementsByClassName("addressForm")[0].style.display="block";
   }

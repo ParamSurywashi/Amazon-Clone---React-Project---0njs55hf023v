@@ -5,18 +5,15 @@ import "../styles/signIn.css";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate , useLocation} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import { saveUserData } from '../Stores/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { localStorageSaver } from '../LocalStorage/localStorageSaver';
 
 function SignIn() {
-  const dispatchUserList = useDispatch();
   const navigateHistory = useNavigate();
   const location = useLocation();
 let from = location.state?.from?.pathname;
 
-    const loginBucket = useSelector((state)=>state.saveUser);
     const [errorMsg, setErrorMsg] = useState("");
     const [userSignIn, setUseSignIn] = useState({
         emailIdSignIn: '',
@@ -45,18 +42,27 @@ function doValidate(inputValue) {
          let PasswordSignIn = document.getElementById("signInPassword").value;
       
          if(!doValidate(emailIdorMobile)){
-        let checkForUsr =0;
-          loginBucket.map((userList,index)=>{
-            if(userList.emailormobileSignUp===emailIdorMobile && userList.passwordSignUp===PasswordSignIn){
-                dispatchUserList(saveUserData(userList));
-                checkForUsr++;
-               toast.success("Login Success............."+userList.nameSignUp, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                className: 'toast-message-sign-up'
+            let checkForUsr =0;
+          
+            const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
+           if(LoadlocalStorage != "null"){
+            if(LoadlocalStorage["signUp"] != null){
+              console.log(LoadlocalStorage["signUp"]);
+              for (const users in LoadlocalStorage["signUp"]) {
+                  let userObj = LoadlocalStorage["signUp"][users];
+                 if(userObj.emailormobileSignUp===emailIdorMobile && userObj.passwordSignUp===PasswordSignIn){
+                   localStorageSaver(userObj,"userLogin");
+                    checkForUsr++;
+                   toast.success("Login Success..By LocalStorage..........."+userObj.nameSignUp, {
+                   position: toast.POSITION.BOTTOM_RIGHT,
+                   className: 'toast-message-sign-up'
             });
             setUseSignIn({emailIdSignIn: '', passowrdSignIn: '' })
             }
-          })
+              }
+              
+            }
+           }
           if(checkForUsr===0){
             setErrorMsg("Invalid Email Id or Password...");
           }
