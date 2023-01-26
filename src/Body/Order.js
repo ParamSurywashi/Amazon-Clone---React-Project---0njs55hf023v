@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/order.css";
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import {AiTwotoneHeart} from "react-icons/ai";
 
 function Order() {
   const [dataOrder, setDataOrder] = useState([]);
-    const dispatch = useDispatch();
-   const ProductsOrderList = useSelector((state)=> state.orderProduct);
-   useEffect(()=>{
-    if(ProductsOrderList.length>0){
-      setDataOrder(ProductsOrderList[0]);
-     }
-   })
+   
+  const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
+  
+   if(LoadlocalStorage != null){
+      if(LoadlocalStorage["orders"] != null){
+        const localStorageOrders = JSON.parse(window.localStorage.getItem("amazonClone"))["orders"];
+       // setDataOrder(localStorageOrders);
+       useEffect(()=>{
+        setDataOrder(Object.values(localStorageOrders));
+       },[])
+      }
+
+    }
+
+
    
    let arrHeart = [];
    function createHeartOrder(rate){

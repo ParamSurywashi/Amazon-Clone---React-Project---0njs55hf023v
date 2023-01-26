@@ -83,7 +83,6 @@ const[radioAddress, setRadioAddress] = useState("");
         }
         function placeForOrder(){
           const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
-          console.log(LoadlocalStorage === null);
            if(LoadlocalStorage != null){
               if(LoadlocalStorage["signIn"] != null){
                 const localStorageUsers = JSON.parse(window.localStorage.getItem("amazonClone"))["signIn"];
