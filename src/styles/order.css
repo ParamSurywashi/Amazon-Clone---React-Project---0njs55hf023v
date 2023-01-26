@@ -24,6 +24,7 @@
     padding: 2em 5px;
     border: 1px solid black;
     margin-bottom: 1em;
+    background-color: #f3e9e9;
 }
 .imageOrderList{
     width: 11em;
@@ -34,4 +35,8 @@
     font-size: 24px;
     width: 100%;
     padding: 1em;
+}
+
+.divOrderList{
+    margin: 1em;
 }

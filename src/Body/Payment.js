@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/payment.css";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { orderProduct } from '../Stores/placeOrderSlice';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,13 +10,13 @@ import { SlCreditCard } from "react-icons/sl";
  import { FaCcMastercard } from "react-icons/fa";
  import { cardDetalsValidate } from '../utils/cardDetailsValidate';
 import { localStorageSaver } from '../LocalStorage/localStorageSaver';
-
+import { removeAll } from '../Stores/cartSlice';
 
 function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
   const { from } = location.state;
-
+  const dispatchForClean = useDispatch();
   const[giftCard, setGiftCard] = useState(0);
   const cardInitialState = {
     cardNumber: '',
@@ -81,13 +81,13 @@ const[radioAddress, setRadioAddress] = useState("");
             setcardErrorDetails({...cardErrorDetail, upiId : "Invalid UPI Id..."});
           }
         }
-        function placeForOrder(){
+      function placeForOrder(){
           const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
            if(LoadlocalStorage != null){
               if(LoadlocalStorage["signIn"] != null){
                 const localStorageUsers = JSON.parse(window.localStorage.getItem("amazonClone"))["signIn"];
 
-                if(Object.keys(localStorageUsers).length>0){
+          if(Object.keys(localStorageUsers).length>0){
           
             const ordetData={
               dateTime : getDateTime(),
@@ -99,6 +99,8 @@ const[radioAddress, setRadioAddress] = useState("");
               position: toast.POSITION.BOTTOM_RIGHT,
               className: 'toast-message-order-place'
           });
+          dispatchForClean(removeAll(productBucket));
+            
            }else{
             toasterLogin();
            }

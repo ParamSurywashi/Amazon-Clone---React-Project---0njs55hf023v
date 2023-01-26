@@ -34,8 +34,15 @@
     place-content: center;
 }  
 
-#helloTxt{
+.helloTxt{
     font-size: small;
+}
+#userDivTxt{
+    width: 7em;
+    margin-left: -2em;
+}
+#userNameTxt{
+    font-size: 20px;
 }
 
 .linkHead{

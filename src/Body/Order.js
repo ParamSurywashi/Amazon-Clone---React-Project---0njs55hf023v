@@ -10,7 +10,6 @@ function Order() {
    if(LoadlocalStorage != null){
       if(LoadlocalStorage["orders"] != null){
         const localStorageOrders = JSON.parse(window.localStorage.getItem("amazonClone"))["orders"];
-       // setDataOrder(localStorageOrders);
        useEffect(()=>{
         setDataOrder(Object.values(localStorageOrders));
        },[])
@@ -46,7 +45,7 @@ function Order() {
            <div className='divOrderList'>
                    <div className='Order'>{product.title}</div>
                   <div className='rateOrderDiv'>&#x20B9;{product.price}</div>
-                 {/* <div>{createHeartOrder(product.rating.rate)}</div> */}
+                 <div>{createHeartOrder(product.rating.rate)}</div>
            </div>
         </div>
           )

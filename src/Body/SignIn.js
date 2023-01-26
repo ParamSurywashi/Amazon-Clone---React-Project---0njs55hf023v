@@ -47,7 +47,6 @@ function doValidate(inputValue) {
             const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
            if(LoadlocalStorage != "null"){
             if(LoadlocalStorage["signUp"] != null){
-              console.log(LoadlocalStorage["signUp"]);
               for (const users in LoadlocalStorage["signUp"]) {
                   let userObj = LoadlocalStorage["signUp"][users];
                  if(userObj.emailormobileSignUp===emailIdorMobile && userObj.passwordSignUp===PasswordSignIn){
