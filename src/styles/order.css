@@ -1,5 +1,5 @@
 .orderTxt{
-    width: 100%;
+    width: -webkit-fill-available;
     background-image: linear-gradient(white, silver);
     font-size: 32px;
     text-align: center;
@@ -11,6 +11,7 @@
 .orderBox{
     width: -webkit-fill-available;
     padding: 0px 15em;
+    margin-bottom: 2em;
 }
 
 .productOrderShows{

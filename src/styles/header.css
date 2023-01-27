@@ -38,11 +38,16 @@
     font-size: small;
 }
 #userDivTxt{
-    width: 7em;
+    width: 9em;
     margin-left: -2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #userNameTxt{
     font-size: 20px;
+    margin-left: -20%;
 }
 
 .linkHead{
