@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/icons": "^4.11.3",
     "@reduxjs/toolkit": "^1.9.1",
     "font-awesome": "^4.7.0",
+    "infinite-react-carousel": "^1.2.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^4.7.1",

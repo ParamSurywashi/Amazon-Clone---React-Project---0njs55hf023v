@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { add } from '../Stores/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Banner from './Banner';
 
 function Main() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function Main() {
       }
   return (
     <>
+    <Banner />
     <div className='bodyGrid'>
    { ProductList.map((prdcts, index)=>{
             return <div className='productsData'key={index} > <Product products={prdcts} index={index} handleAddToBucket={handleAddToBucket}/> </div> 
