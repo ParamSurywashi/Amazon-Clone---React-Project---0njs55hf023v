@@ -8,7 +8,7 @@ function Footer() {
     <div className='footerBase'>
         <div className='websiteFooter' >
         &copy; {new Date().getFullYear()} Copyright:{' '}
-        <Link to="/">Amazon.in</Link>
+        <Link to="/" className='linkForWebsite'>Amazon.in</Link>
       </div>
     </div>
   )
