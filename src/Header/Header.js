@@ -10,6 +10,7 @@ import Payment from '../Body/Payment';
 import SignIn from '../Body/SignIn';
 import SignUp from '../Body/SignUp';
 import Order from '../Body/Order';
+import Footer from './Footer';
 
 function Header() {
   return (
@@ -21,36 +22,42 @@ function Header() {
             <>
             <HeaderBar />
             <Main />
+            <Footer />
             </>
            }/> 
         <Route path='/bucket' element={
               <>              
             <HeaderBar />
             <Bucket />
+            <Footer />
             </>
            }/> 
         <Route path='/payment' element={
               <>              
             <HeaderBar />
             <Payment />
+            <Footer />
             </>
            }/> 
         <Route path='/signIn' element={
               <>              
             <HeaderBar />
             <SignIn />
+            <Footer />
             </>
            }/> 
         <Route path='/signUp' element={
               <>              
             <HeaderBar />
             <SignUp />
+            <Footer />
             </>
            }/> 
         <Route path='/order' element={
               <>              
             <HeaderBar />
             <Order />
+            <Footer />
             </>
            }/> 
       </Routes>

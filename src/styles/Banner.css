@@ -1,6 +1,6 @@
 .banner{
     position: absolute;
-    width: 100%;
+    width: -webkit-fill-available; 
     /* z-index: -1; */
      -webkit-mask-image: linear-gradient(
               to top,
