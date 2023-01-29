@@ -18,3 +18,42 @@
 .linkForWebsite{
     text-decoration: none;
 }
+#backToTopTxt{
+    font-size: 18px;
+    background-image: linear-gradient(#5b6c82, #445a77);
+    text-align: center;
+    height: 3vh;
+    margin-bottom: 2px;
+}
+
+/* .footerDivs{
+    display: flex;
+    flex-direction: row;
+} */
+
+.footerDivs{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    background-image: linear-gradient(#5b6c82, #445a77);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logoLink{
+    width: 8%;
+}
+
+.footerLogo{
+    height: 100%;
+    width: 100%;
+}
+.footerDivs a{
+    color: black;
+}
+.footerDivs a:visited {
+    color: black;
+  }
