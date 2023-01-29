@@ -3,7 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0em;
     row-gap: 0em;
-    margin: 18% 5%;
+    margin: 18% 0% 5%;
     /* background-color: #b6c3c2; */
     background-image: linear-gradient(to bottom, transparent 1%, #8dc6c1, #b8e0d3); 
     /* border: 10px solid gray; */
