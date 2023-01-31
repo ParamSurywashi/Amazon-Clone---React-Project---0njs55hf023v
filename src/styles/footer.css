@@ -44,7 +44,8 @@
 }
 
 #logoLink{
-    width: 8%;
+    width: 16em;
+    height: 10em;
 }
 
 .footerLogo{
@@ -52,8 +53,34 @@
     width: 100%;
 }
 .footerDivs a{
-    color: white;
+    color: silver;
 }
 .footerDivs a:visited {
+    color: silver;
+  }
+.footerDivs span{
     color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+  .footerWithDetails{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    background-image: linear-gradient(#3a424b, #131921);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2em 0px;
+  }
+  .footerWithDetails a{
+    color: silver;
+}
+#someAnchorDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }

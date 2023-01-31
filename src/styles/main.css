@@ -3,10 +3,9 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0em;
     row-gap: 0em;
-    margin: 18% 0% 5%;
-    /* background-color: #b6c3c2; */
+    margin: 18% 10% 5%;
     background-image: linear-gradient(to bottom, transparent 1%, #8dc6c1, #b8e0d3); 
-    /* border: 10px solid gray; */
+ 
 }
 
 .AddtoBucketBtn{
@@ -60,4 +59,17 @@
     background-color: rgb(85, 241, 85);
     font-size: 22px;
     padding: 2em;
+}
+
+.categoryDiv{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    background-image: linear-gradient(#5b6c82, #445a77);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1hv 0px;
 }

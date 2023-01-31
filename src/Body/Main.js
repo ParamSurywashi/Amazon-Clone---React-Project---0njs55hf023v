@@ -7,6 +7,7 @@ import { add } from '../Stores/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Banner from './Banner';
+import imageForLogo from "../images/ImageForApp.png";
 
 function Main() {
   const dispatch = useDispatch();
@@ -21,14 +22,38 @@ function Main() {
     })
 }
 
+const fetchCategory = (category)=>{
+  return fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())
+  .then((response)=>{
+    setProductList(response);
+  })
+}
+
+   const handleCategory = (e)=>{
+
+       if(e.target.id === "allProducts"){
+        fetchProducts();
+       }
+       if(e.target.id === "electronics"){
+        fetchCategory("electronics");
+       }
+       if(e.target.id === "jewelery"){
+        fetchCategory("jewelery");
+       }
+       if(e.target.id === "mensclothing"){
+        fetchCategory("men's clothing");
+       }
+       if(e.target.id === "womensclothing"){
+        fetchCategory("women's clothing");
+       }
+   }
+
     useEffect(() => {
         fetchProducts();
       },[])
 
       const handleAddToBucket = (products)=>{
-       // console.log(products)
         let countForProduct=0;
-      // dispatch({type:"bucket/add", payload : products})
       checkProductinBucket.map((oldPrdcts)=>{
         if(oldPrdcts.id===products.id){
           countForProduct++;
@@ -49,6 +74,14 @@ function Main() {
       }
   return (
     <>
+    <div className='categoryDiv'>
+       <div id='allProducts' onClick={handleCategory}>All</div>
+       <div id='electronics' onClick={handleCategory}>Electronics</div>
+       <div id='jewelery' onClick={handleCategory}>Jewelery</div>
+       <div id='mensclothing' onClick={handleCategory}>Men's clothing</div>
+       <div id='womensclothing' onClick={handleCategory}>Women's clothing</div>
+       <div id='appsDivImg'><img src={imageForLogo} /></div>
+    </div>
     <Banner />
     <div className='bodyGrid'>
    { ProductList.map((prdcts, index)=>{

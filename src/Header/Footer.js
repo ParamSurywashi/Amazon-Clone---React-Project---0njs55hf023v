@@ -58,7 +58,14 @@ function Footer() {
               <li><a href="https://www.amazon.in/gp/help/customer/display.html?nodeId=200507590&ref_=footer_gw_m_b_he">Help</a></li>
             </ul>
           </div>
-       {/* </div> <div className='footerWithDetails'></div> */}
+       <div className='footerWithDetails'>
+        <div id='someAnchorDiv'> 
+         <a >Conditions of Use & Sale</a>
+         <a >Privacy Notice</a>
+         <a >Interest-Based Ads</a>
+         </div>
+         <a >© 1996-2023, Amazon.com, Inc. or its affiliates</a>
+        </div> 
        </>
         )
       
