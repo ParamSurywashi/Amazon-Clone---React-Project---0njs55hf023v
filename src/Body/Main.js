@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import Product from './Product';
 import '../styles/main.css';
+import { RotatingLines } from 'react-loader-spinner';
 import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { add } from '../Stores/cartSlice';
@@ -21,9 +22,24 @@ function Main() {
         setProductList(response);
     })
 }
-
+const [loader,setLoader] = useState(true);
 const fetchCategory = (category)=>{
-  return fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())
+
+
+ setTimeout(()=>{
+  setLoader(false);
+ },1200)
+  console.log(loader)
+  return   (loader) ? 
+    <div id='loaderDIv'> <RotatingLines
+strokeColor="black"
+strokeWidth="4"
+animationDuration="0.75"
+width="100"
+visible={true}
+/>  </div>
+ 
+: fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())
   .then((response)=>{
     setProductList(response);
   })
