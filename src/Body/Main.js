@@ -25,21 +25,7 @@ function Main() {
 const [loader,setLoader] = useState(true);
 const fetchCategory = (category)=>{
 
-
- setTimeout(()=>{
-  setLoader(false);
- },1200)
-  console.log(loader)
-  return   (loader) ? 
-    <div id='loaderDIv'> <RotatingLines
-strokeColor="black"
-strokeWidth="4"
-animationDuration="0.75"
-width="100"
-visible={true}
-/>  </div>
- 
-: fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())
+  return  fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())
   .then((response)=>{
     setProductList(response);
   })
@@ -47,6 +33,7 @@ visible={true}
 
    const handleCategory = (e)=>{
 
+    
        if(e.target.id === "allProducts"){
         fetchProducts();
        }

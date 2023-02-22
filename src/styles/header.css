@@ -10,11 +10,15 @@
     width: 8%;
 }
 #searchBox{
-   display: inline;
+   /* display: inline;
    padding: 0px;
    margin: 0px;
    height: 8%;
-   width: 70%;
+   width: 70%; */
+   width: 65%;
+   position: relative;
+   display: flex;
+   margin: 0px 3em 0px 1em;
 }
 .imageLogo{
     height: 100%;
@@ -22,16 +26,28 @@
 }
 
 .searchBar{
-    height: 2em;
+    /* height: 2em;
     flex-wrap: wrap;
-    width: 90%;
+    width: 90%; */
+    width: 100%;
+  border: 3px solid rgb(180, 128, 33);
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: large;
 }
 .searchBtn{
-   height: 2rem;
-    width: 2rem;
-    background-color: rgb(180, 128, 33);
-    text-align: center;
-    place-content: center;
+   width: 40px;
+  height: 36px;
+  border: 1px solid rgb(180, 128, 33);
+  background: rgb(180, 128, 33);
+  text-align: center;
+  color: #000;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }  
 
 .helloTxt{
@@ -61,6 +77,6 @@
     font-size: 26px;
 }
 #orderCount{
-    font-size: 18px;
+    font-size: 26px;
     margin-bottom: 50px;
 }
