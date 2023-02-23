@@ -1,3 +1,6 @@
+*{
+    margin: 0px;
+}
 #loaderDIv{
     display: flex;
     align-items: center;
