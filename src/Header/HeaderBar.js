@@ -39,9 +39,9 @@ const productNUmber = useSelector((state)=>state.bucket);
         <input type="text" value={searchInput} onChange={(e)=>handleChange(e)} className='searchBar'/>
         <button className='searchBtn'> <FaSearch /></button>
      </div>
-     <Link to="/signIn" className='linkHead' id='userDivTxt'> <span className='helloTxt' id='userNameTxt'>Hello {userName}<br/></span> Sign In</Link>
-     <Link to="/order" className='linkHead'> <span className='helloTxt'>Returns<br/></span>& Orders</Link>
-     <Link to="/" className='linkHead'> <span className='helloTxt'>Your<br/></span>Primes</Link>
+     <Link to="/signIn" className='linkHead' id='userDivTxt'> <span className='helloTxt' id='userNameTxt'>Hello {userName}</span> Sign In</Link>
+     <Link to="/order" className='linkHead'> <span className='helloTxt'>Returns</span> & Orders</Link>
+     <Link to="/" className='linkHead'> <span className='helloTxt'>Your</span> Primes</Link>
      <Link to="/bucket" id='linkOrderIcon'> <MdShoppingBasket/> <span id='orderCount'>{productNUmber.length}</span></Link>
     </nav>
     </>

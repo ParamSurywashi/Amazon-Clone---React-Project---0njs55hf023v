@@ -22,7 +22,7 @@ function Main() {
         setProductList(response);
     })
 }
-const [loader,setLoader] = useState(true);
+
 const fetchCategory = (category)=>{
 
   return  fetch("https://fakestoreapi.com/products/category/"+category).then((res)=>res.json())

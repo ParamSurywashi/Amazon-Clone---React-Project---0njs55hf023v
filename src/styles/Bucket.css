@@ -51,3 +51,14 @@ width : -webkit-fill-available;
     font-weight: bold;
     margin-top: 2em;
 }
+
+
+@media screen and (max-width: 450px) {
+    #advCheckoutBox{
+        display: flex;
+        flex-direction: column;
+    }
+    #ImgDivAdvertizement {
+        width: 100%;
+    }
+}

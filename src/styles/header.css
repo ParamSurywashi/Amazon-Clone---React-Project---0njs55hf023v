@@ -51,7 +51,7 @@
 }  
 
 .helloTxt{
-    font-size: small;
+    font-size: 20px; 
 }
 #userDivTxt{
     width: 9em;
@@ -64,9 +64,11 @@
 #userNameTxt{
     font-size: 20px;
     margin-left: -20%;
+    
 }
 
 .linkHead{
+    margin-top: 1vh;
     color: white;
     font-weight: bold;
 }
@@ -79,4 +81,42 @@
 #orderCount{
     font-size: 26px;
     margin-bottom: 50px;
+}
+
+@media screen and (max-width: 450px) {
+    #firstLogo{
+        width: 25vh;
+    }
+    /*
+      */
+    .navBar{
+        display: flex;
+        flex-direction: column;
+        background-color: #131921;
+        padding: 1% 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    #searchBox{
+        margin: 0px 3em 0px 1vh;
+        width: 90%;
+     }
+   
+    #userDivTxt{
+        width: 8em;
+        margin-left: 0px;
+    
+    }
+    #userNameTxt{
+        font-size: 20px;
+        margin-left: 0px;
+    }
+    .linkHead{
+      width: 9em;
+      margin-left: 1em;
+    }
+    #linkOrderIcon{
+      margin-left: 2vh;
+    }
+    
 }

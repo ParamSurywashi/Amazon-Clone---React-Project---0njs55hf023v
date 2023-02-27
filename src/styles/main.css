@@ -73,3 +73,24 @@
     align-items: center;
     padding: 1hv 0px;
 }
+@media screen and (max-width: 450px) {
+    .bodyGrid{
+        grid-template-columns: repeat(1, 1fr);
+        margin: 6m 0px 0px 0px;
+    }
+    
+    #goToBtnDiv{
+        position: fixed;
+      right: 0px; bottom: 0px;
+      margin: 0px 0px 5vh 0px;
+      padding: 5px;
+    }
+
+    .imageProduct{
+        height: 12rem;
+        width: 12em;
+    }
+    .categoryDiv{
+       display: none;
+    }
+}

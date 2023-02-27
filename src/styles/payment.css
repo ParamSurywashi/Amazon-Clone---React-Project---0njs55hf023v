@@ -135,3 +135,18 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+
+@media screen and (max-width: 450px) {
+    #cardBoxDiv input{
+        padding: 14px 3px;
+        width: 100%;
+    }
+    #upiBoxDiv input{
+        padding: 14px 3px;
+        width: 100%;
+    }
+    #upiBoxDiv input{
+        padding: 14px 3px;
+        width: 100%;
+    }
+}
