@@ -76,7 +76,8 @@
 @media screen and (max-width: 450px) {
     .bodyGrid{
         grid-template-columns: repeat(1, 1fr);
-        margin: 6m 0px 0px 0px;
+        margin: 0px;
+        margin-top: 6em;
     }
     
     #goToBtnDiv{
