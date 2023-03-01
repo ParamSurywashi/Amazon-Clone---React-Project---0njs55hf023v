@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import '../styles/footer.css';
 import amzLogo from '../images/amazon-logo.png';
 
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+
+
 function Footer() {
-  const [footers, setFooters] = useState(false);
-    document.addEventListener('scroll', function(e) {
-        let documentHeight = document.body.scrollHeight;
-        let currentScroll = window.scrollY + window.innerHeight;
-        let modifier = 200; 
-        if(currentScroll + modifier > documentHeight) {
-           setFooters(true);
-        }else{
-          setFooters(false);
-        }
-    })
+  // const [footers, setFooters] = useState(false);
+  
+  //   document.addEventListener('scroll', function(e) {
+  //     let documentHeight = document.body.scrollHeight;
+  //     let currentScroll = window.scrollY + window.innerHeight;
+  //     let modifier = 200; 
+  //     if(currentScroll + modifier > documentHeight) {
+  //       setFooters(true);
+  //     }else{
+  //       setFooters(false);
+  //     }
+  // })
+
+
+
 
     function backToTopFunc(e){
       document.body.scrollTop = 0;
@@ -24,15 +29,15 @@ function Footer() {
 
   return (
     
-      (!footers) ? (
-    <div className='footerBase'>
+    //   (!footers) ? (
+    // <div className='footerBase'>
      
-          <div className='websiteFooter' >
-          &copy; {new Date().getFullYear()} Copyright:{' '}
-          <Link to="/" className='linkForWebsite'>Amazon.in</Link>
-            </div>
-        </div>
-        ) : (
+    //       <div className='websiteFooter' >
+    //       &copy; {new Date().getFullYear()} Copyright:{' '}
+    //       <Link to="/" className='linkForWebsite'>Amazon.in</Link>
+    //         </div>
+    //     </div>
+    //     ) : (
           <>
           <div onClick={(e)=>backToTopFunc(e)} id="backToTopTxt">Back To Top</div>
       
@@ -42,8 +47,9 @@ function Footer() {
             <ul>
               <span>Get to Know us</span>
               <li>About us</li>
-              <li>Carrer</li>
+              <li>Carrers</li>
               <li>Press Releases</li>
+              <li>Amazon Science</li>
             </ul>
             <ul>
               <span>Connect with Us</span>
@@ -54,6 +60,8 @@ function Footer() {
             <ul>
               <span>Let Us Help You</span>
               <li>COVID-19 and Amazon</li>
+              <li>Your Account</li>
+              <li>Amazon App Download</li>
               <li>Amazon App Download</li>
               <li>Help</li>
             </ul>
@@ -80,9 +88,6 @@ function Footer() {
        </>
         )
       
-        
-   
-  )
 }
 
 export default Footer

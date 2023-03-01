@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { localStorageSaver } from '../LocalStorage/localStorageSaver';
 
 function SignIn() {
-  const navigateHistory = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
 let from = location.state?.from?.pathname;
 
@@ -45,18 +45,22 @@ function doValidate(inputValue) {
             let checkForUsr =0;
           
             const LoadlocalStorage = JSON.parse(window.localStorage.getItem("amazonClone"));
-           if(LoadlocalStorage != "null"){
+            
+           if(LoadlocalStorage != null){
             if(LoadlocalStorage["signUp"] != null){
               for (const users in LoadlocalStorage["signUp"]) {
                   let userObj = LoadlocalStorage["signUp"][users];
                  if(userObj.emailormobileSignUp===emailIdorMobile && userObj.passwordSignUp===PasswordSignIn){
                    localStorageSaver(userObj,"userLogin");
                     checkForUsr++;
-                   toast.success("Login Success..By LocalStorage..........."+userObj.nameSignUp, {
+                   toast.success("Login Success..."+userObj.nameSignUp, {
                    position: toast.POSITION.BOTTOM_RIGHT,
                    className: 'toast-message-sign-up'
             });
             setUseSignIn({emailIdSignIn: '', passowrdSignIn: '' })
+                setTimeout(()=>{
+                   navigate("/");
+                },1000);
             }
               }
               
