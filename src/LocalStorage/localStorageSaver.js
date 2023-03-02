@@ -23,11 +23,13 @@ const localStorageSaver = (formData, storageName) => {
 
     if(storageName === "orderBucketData"){
     if(JSON.parse(window.localStorage.getItem("amazonClone"))["orders"]){
-      idxForOrder = JSON.parse(window.localStorage.getItem("amazonClone"))["orders"].length;
+     // console.log(typeof JSON.parse(window.localStorage.getItem("amazonClone"))["orders"]);
+      idxForOrder = Object.keys(JSON.parse(window.localStorage.getItem("amazonClone"))["orders"]).length;
     }
-   
+     console.log(idxForOrder);
       let objctForEveryOrder = {};
       formData.payload.map((prducts)=>{
+        console.log(prducts);
         objctForEveryOrder["product"+(idxForOrder++)] = prducts;
       })
       objForOrders = {...JSON.parse(window.localStorage.getItem("amazonClone"))["orders"], ...objctForEveryOrder };
