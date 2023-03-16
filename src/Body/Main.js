@@ -15,11 +15,14 @@ function Main() {
   const navigate = useNavigate();
   const checkProductinBucket = useSelector((state) => state.bucket);
   const [ProductList, setProductList] = useState([]);
+  const [loaderBlock, setLoaderBlock] = useState(false);
   const fetchProducts = () => {
     return fetch("https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products").then((res) => res.json())
       .then((response) => {
         //  console.log(response);
         setProductList(response);
+        setLoaderBlock(false);
+        //document.getElementById("root").style.filter="none";
       })
   }
 
@@ -28,19 +31,28 @@ function Main() {
     return fetch("https://fakestoreapi.com/products/category/" + category).then((res) => res.json())
       .then((response) => {
         setProductList(response);
+        setLoaderBlock(false);
+       // document.getElementById("root").style.filter="none";
       })
+  }
+  
+  function loaderCreates(){
+      return (
+        <div id='categoryLoader' > <RotatingLines
+        strokeColor="black"
+        strokeWidth="4"
+        animationDuration="0.75"
+        width="100"
+        visible={true}
+      />  </div>
+      )
   }
 
   const handleCategory = (e) => {
-      
-//     <div id='categoryLoader'> <RotatingLines
-//   strokeColor="black"
-//   strokeWidth="4"
-//   animationDuration="0.75"
-//   width="100"
-//   visible={true}
-// />  </div>
-  //  document.getElementsByTagName("bodyGrid").style.filter="blur(2px)";
+   // document.getElementById("root").style.filter="blur(2px)";
+    //document.getElementsByClassName("loaderId").style.filter="none";
+    setLoaderBlock(true);
+    
     if (e.target.id === "allProducts") {
       fetchProducts();
     }
@@ -93,6 +105,9 @@ function Main() {
         <div id='appsDivImg'><img src={imageForLogo} /></div>
       </div>
       <Banner />
+      {
+        (loaderBlock) ? (loaderCreates()) : ""
+      }
       <div className='bodyGrid'>
         {ProductList.map((prdcts, index) => {
           return <div className='productsData' key={index} > <Product products={prdcts} index={index} handleAddToBucket={handleAddToBucket} /> </div>
