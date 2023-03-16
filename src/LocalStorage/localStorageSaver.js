@@ -29,9 +29,11 @@ const localStorageSaver = (formData, storageName) => {
      console.log(idxForOrder);
       let objctForEveryOrder = {};
       formData.payload.map((prducts)=>{
-        console.log(prducts);
         objctForEveryOrder["product"+(idxForOrder++)] = prducts;
       })
+      // for(let prducts in formData){
+      //   objctForEveryOrder["product"+(idxForOrder++)] = prducts;
+      // }
       objForOrders = {...JSON.parse(window.localStorage.getItem("amazonClone"))["orders"], ...objctForEveryOrder };
      // console.log(objForOrders)
       allData["orders"]=objForOrders;

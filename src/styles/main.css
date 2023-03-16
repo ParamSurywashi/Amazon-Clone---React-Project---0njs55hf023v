@@ -74,6 +74,14 @@
     align-items: center;
     padding: 1hv 0px;
 }
+
+#categoryLoader{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40em;
+}
 @media screen and (max-width: 450px) {
     .bodyGrid{
         grid-template-columns: repeat(1, 1fr);

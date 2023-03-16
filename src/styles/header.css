@@ -74,9 +74,11 @@
 }
 
 #linkOrderIcon{
+    margin-top: 2vh;
     color: white;
     text-decoration: none;
-    font-size: 26px;
+    font-size: 28px;
+    width: 2em;
 }
 #orderCount{
     font-size: 26px;

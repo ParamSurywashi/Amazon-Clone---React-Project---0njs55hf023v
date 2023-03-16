@@ -67,17 +67,7 @@ function Footer() {
             </ul>
           </div>
            
-            {/* 
-            <a href='https://www.aboutamazon.in/?utm_source=gateway&utm_medium=footer'></a>
-            <a href="https://www.aboutamazon.in/?utm_source=gateway&utm_medium=footer"> </a>
-            <a href="https://press.aboutamazon.in/?utm_source=gateway&utm_medium=footer"> </a>
-            <a href='https://www.amazon.in/gp/redirect.html/ref=footer_fb?location=http://www.facebook.com/AmazonIN&token=2075D5EAC7BB214089728E2183FD391706D41E94&6'> </a>
-            <a href="https://www.amazon.in/gp/redirect.html/ref=footer_twitter?location=http://twitter.com/AmazonIN&token=A309DFBFCB1E37A808FF531934855DC817F130B6&6"></a>
-            <a href="https://www.amazon.in/gp/redirect.html?location=https://www.instagram.com/amazondotin&token=264882C912E9D005CB1D9B61F12E125D5DF9BFC7&source=standards"> </a>
-            <a href='https://www.amazon.in/gp/help/customer/display.html?nodeId=GDFU3JS5AL6SYHRD&ref_=footer_covid'> </a>
-            <a href="https://www.amazon.in/gp/browse.html?node=6967393031&ref_=footer_mobapp"> </a>
-            <a href="https://www.amazon.in/gp/help/customer/display.html?nodeId=200507590&ref_=footer_gw_m_b_he"></a> */}
-       <div className='footerWithDetails'>
+                 <div className='footerWithDetails'>
         <div id='someAnchorDiv'> 
          <a >Conditions of Use & Sale</a>
          <a >Privacy Notice</a>
@@ -91,3 +81,15 @@ function Footer() {
 }
 
 export default Footer
+
+
+  // {/* 
+  //           <a href='https://www.aboutamazon.in/?utm_source=gateway&utm_medium=footer'></a>
+  //           <a href="https://www.aboutamazon.in/?utm_source=gateway&utm_medium=footer"> </a>
+  //           <a href="https://press.aboutamazon.in/?utm_source=gateway&utm_medium=footer"> </a>
+  //           <a href='https://www.amazon.in/gp/redirect.html/ref=footer_fb?location=http://www.facebook.com/AmazonIN&token=2075D5EAC7BB214089728E2183FD391706D41E94&6'> </a>
+  //           <a href="https://www.amazon.in/gp/redirect.html/ref=footer_twitter?location=http://twitter.com/AmazonIN&token=A309DFBFCB1E37A808FF531934855DC817F130B6&6"></a>
+  //           <a href="https://www.amazon.in/gp/redirect.html?location=https://www.instagram.com/amazondotin&token=264882C912E9D005CB1D9B61F12E125D5DF9BFC7&source=standards"> </a>
+  //           <a href='https://www.amazon.in/gp/help/customer/display.html?nodeId=GDFU3JS5AL6SYHRD&ref_=footer_covid'> </a>
+  //           <a href="https://www.amazon.in/gp/browse.html?node=6967393031&ref_=footer_mobapp"> </a>
+  //           <a href="https://www.amazon.in/gp/help/customer/display.html?nodeId=200507590&ref_=footer_gw_m_b_he"></a> */}

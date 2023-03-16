@@ -37,7 +37,7 @@ function Order() {
          <div id='orderLengthTxt'>{(dataOrder.length===0) ? "No Order Found" : "Total "+dataOrder.length+ " Order items" }</div>
         <div className='productOrderShows'>
           
-        {dataOrder.map((product)=>{
+        {dataOrder.slice(0).reverse().map((product)=>{
          
           return(
             <div className='orderList' key={product.id}>
