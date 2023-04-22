@@ -21,7 +21,6 @@ function Bucket() {
 
   function handleCheckBox(e) {
     setGift(e.target.checked);
-
   }
 
   function getProceed() {

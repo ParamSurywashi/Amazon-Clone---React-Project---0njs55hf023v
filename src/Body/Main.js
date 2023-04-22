@@ -10,21 +10,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import Banner from './Banner';
 import imageForLogo from "../images/ImageForApp.png";
 
-function Main() {
+function Main({fetchProducts,ProductList, loaderBlock}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkProductinBucket = useSelector((state) => state.bucket);
-  const [ProductList, setProductList] = useState([]);
-  const [loaderBlock, setLoaderBlock] = useState(false);
-  const fetchProducts = () => {
-    return fetch("https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products").then((res) => res.json())
-      .then((response) => {
-        //  console.log(response);
-        setProductList(response);
-        setLoaderBlock(false);
-        //document.getElementById("root").style.filter="none";
-      })
-  }
+ 
+
+  // const fetchProducts = () => {
+  //   return fetch("https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products").then((res) => res.json())
+  //     .then((response) => {
+  //       //  console.log(response);
+  //       setProductList(response);
+  //       setLoaderBlock(false);
+  //       //document.getElementById("root").style.filter="none";
+  //     })
+  // }
 
   const fetchCategory = (category) => {
 
@@ -32,7 +32,6 @@ function Main() {
       .then((response) => {
         setProductList(response);
         setLoaderBlock(false);
-       // document.getElementById("root").style.filter="none";
       })
   }
   
@@ -70,9 +69,9 @@ function Main() {
     }
   }
 
-  useEffect(() => {
-    fetchProducts();
-  }, [])
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, [])
 
   const handleAddToBucket = (products) => {
     let countForProduct = 0;
@@ -88,7 +87,12 @@ function Main() {
         className: 'toast-message-add-bucket'
       });
     } else {
-      alert("Already Have in Bucket");
+      alert("Already Have in Bucket "+products.id);
+
+      let ProductId = products.id;
+      console.log("countItmesOld" + ProductId);
+  
+
     }
   }
   const handleGotoBucket = (e) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { HashRouter, Route } from "react-router-dom";
 import { Routes } from 'react-router-dom';
 import HeaderBar from './HeaderBar';
@@ -11,8 +11,27 @@ import SignIn from '../Body/SignIn';
 import SignUp from '../Body/SignUp';
 import Order from '../Body/Order';
 import Footer from './Footer';
+import SearchPage from '../Body/SearchPage';
+
 
 function Header() {
+   const [ProductList, setProductList] = useState([]);
+   const [loaderBlock, setLoaderBlock] = useState(false);
+
+   const fetchProducts = () => {
+      return fetch("https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products").then((res) => res.json())
+        .then((response) => {
+          //  console.log(response);
+          setProductList(response);
+          setLoaderBlock(false);
+          //document.getElementById("root").style.filter="none";
+        })
+    }
+
+    useEffect(() => {
+      fetchProducts();
+    }, [])
+
   return (
   <>
   <Provider store={store}>
@@ -21,7 +40,7 @@ function Header() {
            <Route path='/' element={
             <>
             <HeaderBar />
-            <Main />
+            <Main fetchProducts = {fetchProducts} ProductList={ProductList} loaderBlock={loaderBlock}/>
             <Footer />
             </>
            }/> 
@@ -43,6 +62,13 @@ function Header() {
               <>              
             <HeaderBar />
             <SignIn />
+            <Footer />
+            </>
+           }/> 
+        <Route path='/search' element={
+            <>
+            <HeaderBar />
+            <SearchPage ProductList={ProductList} />
             <Footer />
             </>
            }/> 
